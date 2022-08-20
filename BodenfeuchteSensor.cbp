@@ -1,0 +1,99 @@
+<?xml version="1.0" encoding="UTF-8" standalone="yes" ?>
+<CodeBlocks_project_file>
+	<FileVersion major="1" minor="6" />
+	<Project>
+		<Option title="BodenfeuchteSensor" />
+		<Option pch_mode="2" />
+		<Option compiler="avr-gcc" />
+		<Build>
+			<Target title="Sender">
+				<Option output="bin/Release/BodenfeuchteSensor.elf" prefix_auto="1" extension_auto="0" />
+				<Option working_dir="" />
+				<Option object_output="obj/Release/" />
+				<Option type="5" />
+				<Option compiler="avr-gcc" />
+				<Compiler>
+					<Add option="-fomit-frame-pointer" />
+					<Add option="-O" />
+					<Add option="-Wall" />
+					<Add option="-std=c++11" />
+					<Add option="-mmcu=atxmega32e5" />
+					<Add option="-c -fpermissive" />
+					<Add option="-Wno-enum-compare" />
+					<Add option="-MD -MP -MF" />
+					<Add option="-ffunction-sections" />
+					<Add option="-fdata-sections" />
+					<Add option="-fpack-struct" />
+					<Add option="-funsigned-char" />
+					<Add option="-funsigned-bitfields" />
+					<Add option="-DNDEBUG" />
+					<Add option="-DSENDER_BUILT" />
+					<Add directory="/home/christof/Downloads/avr8-gnu-toolchain-linux_x86_64/avr/lib/avrxmega2" />
+					<Add directory="/home/christof/Downloads/avr8-gnu-toolchain-linux_x86_64/avr/include" />
+					<Add directory="./" />
+					<Add directory="/home/christof/Daten/Software/repositories/Bewaesserungsstation" />
+					<Add directory="../communication" />
+					<Add directory="/home/christof/Daten/Software/repositories/LoRa-for-ATxMega/src" />
+					<Add directory="/home/christof/Daten/Software/repositories/spi" />
+					<Add directory="/home/christof/Daten/Software/repositories/ComReceiver" />
+					<Add directory="/home/christof/Daten/Software/repositories/twiSlave" />
+					<Add directory="/opt/avr8-gnu-toolchain-linux_x86_64/avr/lib/avrxmega2" />
+					<Add directory="/opt/avr8-gnu-toolchain-linux_x86_64/avr/include" />
+				</Compiler>
+				<Linker>
+					<Add option="-Wl,-u,vfprintf" />
+					<Add option="-Wl,--gc-sections" />
+					<Add library="libm" />
+					<Add library="libprintf_flt" />
+				</Linker>
+			</Target>
+			<Environment>
+				<Variable name="MCU" value="atxmega32e5" />
+			</Environment>
+		</Build>
+		<Compiler>
+			<Add option="-Wall" />
+			<Add option="-DF_CPU=32000000UL" />
+			<Add directory="/home/christof/repositories/communication" />
+			<Add directory="/home/christof/Daten/Software/repositories/Secrets" />
+			<Add directory="/home/christof/Daten/Software/repositories/capaMeasure" />
+			<Add directory="/home/christof/Daten/Software/repositories/timer" />
+		</Compiler>
+		<Linker>
+			<Add option="-mmcu=atxmega32e5" />
+			<Add option="-Wl,-Map=$(TARGET_OUTPUT_DIR)$(TARGET_OUTPUT_BASENAME).map,--cref" />
+		</Linker>
+		<ExtraCommands>
+			<Add after="avr-objdump -h -S $(TARGET_OUTPUT_FILE) &gt; $(TARGET_OUTPUT_DIR)$(TARGET_OUTPUT_BASENAME).lss" />
+			<Add after="avr-objcopy -R .eeprom -R .fuse -R .lock -R .signature -O ihex $(TARGET_OUTPUT_FILE) $(TARGET_OUTPUT_DIR)$(TARGET_OUTPUT_BASENAME).hex" />
+			<Add after="avr-objcopy --no-change-warnings -j .eeprom --change-section-lma .eeprom=0 -O ihex $(TARGET_OUTPUT_FILE) $(TARGET_OUTPUT_DIR)$(TARGET_OUTPUT_BASENAME).eep" />
+			<Add after="avr-objcopy --no-change-warnings -j .lock --change-section-lma .lock=0 -O ihex $(TARGET_OUTPUT_FILE) $(TARGET_OUTPUT_DIR)$(TARGET_OUTPUT_BASENAME).lock" />
+			<Add after="avr-objcopy --no-change-warnings -j .signature --change-section-lma .signature=0 -O ihex $(TARGET_OUTPUT_FILE) $(TARGET_OUTPUT_DIR)$(TARGET_OUTPUT_BASENAME).sig" />
+			<Add after="avr-objcopy --no-change-warnings -j .fuse --change-section-lma .fuse=0 -O ihex $(TARGET_OUTPUT_FILE) $(TARGET_OUTPUT_DIR)$(TARGET_OUTPUT_BASENAME).fuse" />
+			<Add after="avr-size $(TARGET_OUTPUT_FILE)" />
+		</ExtraCommands>
+		<Unit filename="../capaMeasure/capaMeasure.cpp" />
+		<Unit filename="../capaMeasure/capaMeasure.h" />
+		<Unit filename="../timer/timer.cpp" />
+		<Unit filename="../timer/timer.h" />
+		<Unit filename="../twiSlave/twi_slave_driver.cpp">
+			<Option compilerVar="CC" />
+		</Unit>
+		<Unit filename="../twiSlave/twi_slave_driver.h" />
+		<Unit filename="../xmegaClocks/xmegaClocks.cpp" />
+		<Unit filename="../xmegaClocks/xmegaClocks.h" />
+		<Unit filename="BodenfeuchteSensor.cpp" />
+		<Unit filename="BodenfeuchteSensor.h" />
+		<Unit filename="BodenfeuchteSensorDefines.h" />
+		<Unit filename="External.h" />
+		<Unit filename="Globals.cpp" />
+		<Unit filename="Operators.cpp" />
+		<Unit filename="Operators.h" />
+		<Unit filename="adcMessung.cpp" />
+		<Unit filename="adcMessung.h" />
+		<Unit filename="myConstants.h" />
+		<Unit filename="myTimers.cpp" />
+		<Unit filename="myTimers.h" />
+		<Extensions />
+	</Project>
+</CodeBlocks_project_file>
