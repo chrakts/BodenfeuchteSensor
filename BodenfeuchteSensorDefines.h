@@ -1,7 +1,9 @@
 #ifndef BODENFEUCHTESENSORDEFINES_H_INCLUDED
 #define BODENFEUCHTESENSORDEFINES_H_INCLUDED
 
-#define SLAVE_ADDRESS    'A'
+#define FIRST_SLAVE_ADDRESS 'A'
+#define SLAVE_ADDRESS       'C'
+#define NUM_SLAVES           5
 
 #define adrHumidity     10
 #define lenHumidity     2
